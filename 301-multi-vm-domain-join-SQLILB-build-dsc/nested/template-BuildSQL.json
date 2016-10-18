@@ -211,6 +211,12 @@
               "LogPath": "[variables('DiskSKU').SQLServer.LogPath]",
               "BackupPath": "[variables('DiskSKU').SQLServer.BackupPath]",
               "TempDBPath": "[variables('DiskSKU').SQLServer.TempDBPath]",
+              "SQLServerAccount": "PrivateSettingsRef:SQLServerAccount",
+              "SQLServerPassword": "PrivateSettingsRef:SQLServerPassword",
+              "SQLAgentAccount": "PrivateSettingsRef:SQLAgentAccount",
+              "SQLAgentPassword": "PrivateSettingsRef:SQLAgentPassword",
+              "SQLAdmin": "PrivateSettingsRef:SQLAdmin",
+              "SQLAdminPwd": "PrivateSettingsRef:SQLAdminPwd",
 
               "BaseURL": "[variables('BaseURL')]"
             }
