@@ -202,7 +202,14 @@
           "type": "DSC",
           "typeHandlerVersion": "2.18",
           "autoUpgradeMinorVersion": true,
-          "protectedSettings": { },
+          "protectedSettings": {
+            "SQLServerAccount": "[parameters('SQLServerAccount')]",
+            "SQLServerPassword": "[parameters('SQLServerPassword')]",
+            "SQLAgentAccount": "[parameters('SQLAgentAccount')]",
+            "SQLAgentPassword": "[parameters('SQLAgentPassword')]",
+            "SQLAdmin": "[parameters('SQLAdmin')]",
+            "SQLAdminPwd": "[parameters('SQLAdminPwd')]"
+          },
           "settings": {
             "ModulesUrl": "[variables('modulesUrl')]",
             "SasToken": "",
@@ -212,12 +219,7 @@
               "LogPath": "[variables('DiskSKU').SQLServer.LogPath]",
               "BackupPath": "[variables('DiskSKU').SQLServer.BackupPath]",
               "TempDBPath": "[variables('DiskSKU').SQLServer.TempDBPath]",
-              "SQLServerAccount": "[parameters('SQLServerAccount')]",
-              "SQLServerPassword": "[parameters('SQLServerPassword')]",
-              "SQLAgentAccount": "[parameters('SQLAgentAccount')]",
-              "SQLAgentPassword": "[parameters('SQLAgentPassword')]",
-              "SQLAdmin": "[parameters('SQLAdmin')]",
-              "SQLAdminPwd": "[parameters('SQLAdminPwd')]",
+              
               "BaseURL": "[variables('BaseURL')]"
             }
             

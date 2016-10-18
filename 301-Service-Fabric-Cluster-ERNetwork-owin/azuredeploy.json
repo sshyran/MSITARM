@@ -265,7 +265,7 @@
     },
     "vmNodeType0Count": {
       "type": "int",
-      "defaultValue": 5
+      "defaultValue": 3
     },
     "vmNodeType1Name": {
       "type": "string",
@@ -326,9 +326,7 @@
     "uniqueStringArray0": [
       "[concat('0', parameters('vmStorageAccountName0'))]",
       "[concat('1', parameters('vmStorageAccountName0'))]",
-      "[concat('2', parameters('vmStorageAccountName0'))]",
-      "[concat('3', parameters('vmStorageAccountName0'))]",
-      "[concat('4', parameters('vmStorageAccountName0'))]"
+      "[concat('2', parameters('vmStorageAccountName0'))]"
     ],
     "uniqueStringArray1": [
       "[concat('5', parameters('vmStorageAccountName1'))]",
@@ -679,8 +677,6 @@
         "[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray0')[0])]",
         "[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray0')[1])]",
         "[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray0')[2])]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray0')[3])]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray0')[4])]",
         "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]",
         "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]",
         "[concat('Microsoft.Network/loadBalancers/', variables('FEILB'))]"
@@ -861,9 +857,7 @@
               "vhdContainers": [
                 "[concat('https://', variables('uniqueStringArray0')[0], '.blob.core.windows.net/', parameters('vmStorageAccountContainerName'))]",
                 "[concat('https://', variables('uniqueStringArray0')[1], '.blob.core.windows.net/', parameters('vmStorageAccountContainerName'))]",
-                "[concat('https://', variables('uniqueStringArray0')[2], '.blob.core.windows.net/', parameters('vmStorageAccountContainerName'))]",
-                "[concat('https://', variables('uniqueStringArray0')[3], '.blob.core.windows.net/', parameters('vmStorageAccountContainerName'))]",
-                "[concat('https://', variables('uniqueStringArray0')[4], '.blob.core.windows.net/', parameters('vmStorageAccountContainerName'))]"
+                "[concat('https://', variables('uniqueStringArray0')[2], '.blob.core.windows.net/', parameters('vmStorageAccountContainerName'))]"
               ],
               "name": "vmssosdisk",
               "caching": "ReadOnly",
@@ -873,8 +867,8 @@
         }
       },
       "sku": {
-        "name": "[parameters('vmNodeType1Size')]",
-        "capacity": "[parameters('vmNodeType1Count')]",
+        "name": "[parameters('vmNodeType0Size')]",
+        "capacity": "[parameters('vmNodeType0Count')]",
         "tier": "Standard"
       },
       "tags": {
@@ -1140,19 +1134,19 @@
               "endPort": "[parameters('nt1applicationEndPort')]",
               "startPort": "[parameters('nt1applicationStartPort')]"
             },
-            "clientConnectionEndpointPort": "[parameters('nt1fabricTcpGatewayPort')]",
+            "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
             "durabilityLevel": "Bronze",
             "ephemeralPorts": {
-              "endPort": "[parameters('nt1ephemeralEndPort')]",
-              "startPort": "[parameters('nt1ephemeralStartPort')]"
+              "endPort": "[parameters('nt0ephemeralEndPort')]",
+              "startPort": "[parameters('nt0ephemeralStartPort')]"
             },
-            "httpGatewayEndpointPort": "[parameters('nt1fabricHttpGatewayPort')]",
+            "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
             "isPrimary": false,
             "vmInstanceCount": "[parameters('vmNodeType1Count')]"
           }
         ],
         "provisioningState": "Default",
-        "reliabilityLevel": "Silver",
+        "reliabilityLevel": "Bronze",
         "vmImage": "Windows"
       },
       "tags": {
