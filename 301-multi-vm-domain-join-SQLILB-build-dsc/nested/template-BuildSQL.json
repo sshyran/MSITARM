@@ -203,12 +203,14 @@
           "typeHandlerVersion": "2.18",
           "autoUpgradeMinorVersion": true,
           "protectedSettings": {
-            "SQLServerAccount": "[parameters('SQLServerAccount')]",
-            "SQLServerPassword": "[parameters('SQLServerPassword')]",
-            "SQLAgentAccount": "[parameters('SQLAgentAccount')]",
-            "SQLAgentPassword": "[parameters('SQLAgentPassword')]",
-            "SQLAdmin": "[parameters('SQLAdmin')]",
-            "SQLAdminPwd": "[parameters('SQLAdminPwd')]"
+            "Items": {
+              "SQLServerAccount": "[parameters('SQLServerAccount')]",
+              "SQLServerPassword": "[parameters('SQLServerPassword')]",
+              "SQLAgentAccount": "[parameters('SQLAgentAccount')]",
+              "SQLAgentPassword": "[parameters('SQLAgentPassword')]",
+              "SQLAdmin": "[parameters('SQLAdmin')]",
+              "SQLAdminPwd": "[parameters('SQLAdminPwd')]"
+            }
           },
           "settings": {
             "ModulesUrl": "[variables('modulesUrl')]",
