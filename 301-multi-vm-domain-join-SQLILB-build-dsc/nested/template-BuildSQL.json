@@ -212,17 +212,20 @@
               "BackupPath": "[variables('DiskSKU').SQLServer.BackupPath]",
               "TempDBPath": "[variables('DiskSKU').SQLServer.TempDBPath]",
 
-              "SQLServerAccount": "[parameters('SQLServerAccount')]",
-              "SQLServerPassword": "PrivateSettingsRef:SServerPassword",
-              
-              "SQLAgentAccount": "[parameters('SQLAgentAccount')]",
-              "SQLAgentPassword": "PrivateSettingsRef:SAgentPassword",
-              
-              "SQLAdmin": "[parameters('SQLAdmin')]",
-              "SQLAdminPwd": "PrivateSettingsRef:SAdminPwd",
-
-              "BaseURL": "[variables('BaseURL')]"
-            }
+              "SQLServerAccount": {
+                "UserName": "[parameters('SQLServerAccount')]",
+                "Password": "PrivateSettingsRef:SServerPassword"
+              },
+              "SQLAgentAccount": {
+                "UserName": "[parameters('SQLAgentAccount')]",
+                "Password": "PrivateSettingsRef:SAgentPassword"
+              },
+              "SQLAdmin": {
+                "UserName": "[parameters('SQLAdmin')]",
+                "Password": "PrivateSettingsRef:SAdminPwd"
+              },
+                "BaseURL": "[variables('BaseURL')]"
+              }
 
           },
           "protectedSettings": {
