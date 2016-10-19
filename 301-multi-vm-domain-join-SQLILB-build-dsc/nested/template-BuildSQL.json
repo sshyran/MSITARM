@@ -211,7 +211,6 @@
               "LogPath": "[variables('DiskSKU').SQLServer.LogPath]",
               "BackupPath": "[variables('DiskSKU').SQLServer.BackupPath]",
               "TempDBPath": "[variables('DiskSKU').SQLServer.TempDBPath]",
-
               "SQLServerAccount": {
                 "UserName": "[parameters('SQLServerAccount')]",
                 "Password": "PrivateSettingsRef:SServerPassword"
@@ -224,10 +223,9 @@
                 "UserName": "[parameters('SQLAdmin')]",
                 "Password": "PrivateSettingsRef:SAdminPwd"
               },
-                "BaseURL": "[variables('BaseURL')]"
+             "BaseURL": "[variables('BaseURL')]"
               }
-
-          },
+            },
           "protectedSettings": {
             "Items": {
               "SServerPassword": "[parameters('SQLServerPassword')]",

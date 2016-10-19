@@ -26,6 +26,8 @@ Configuration DeploySQLServer
   Node localhost
   {
   
+    write-host $($using:SQLServerAccount.username)
+    write-host $($using:SQLServerAccount.password)
 
     $InstanceName =Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server' -Name InstalledInstances | Select-Object -ExpandProperty InstalledInstances | ?{$_ -eq 'MSSQLSERVER'}
     $InstanceFullName = Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL' -Name $InstanceName | Select-Object -ExpandProperty $InstanceName;
