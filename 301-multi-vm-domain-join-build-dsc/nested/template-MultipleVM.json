@@ -537,7 +537,7 @@
         },
         "protectedSettings": {
           "Items": {
-            "LocalPassword": "[parameters('localAdminUserName')]",
+            "LocalPassword": "[parameters('localAdminPassword')]",
             "DomainPassword": "[parameters('domainJoinPassword')]"
           }
         }
