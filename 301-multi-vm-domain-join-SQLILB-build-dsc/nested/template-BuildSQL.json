@@ -211,12 +211,15 @@
               "LogPath": "[variables('DiskSKU').SQLServer.LogPath]",
               "BackupPath": "[variables('DiskSKU').SQLServer.BackupPath]",
               "TempDBPath": "[variables('DiskSKU').SQLServer.TempDBPath]",
-              "SQLServerAccount": "PrivateSettingsRef:SQLServerAccount",
-              "SQLServerPassword": "PrivateSettingsRef:SQLServerPassword",
-              "SQLAgentAccount": "PrivateSettingsRef:SQLAgentAccount",
-              "SQLAgentPassword": "PrivateSettingsRef:SQLAgentPassword",
-              "SQLAdmin": "PrivateSettingsRef:SQLAdmin",
-              "SQLAdminPwd": "PrivateSettingsRef:SQLAdminPwd",
+
+              "SQLServerAccount": "[parameters('SQLServerAccount')]",
+              "SQLServerPassword": "PrivateSettingsRef:SServerPassword",
+              
+              "SQLAgentAccount": "[parameters('SQLAgentAccount')]",
+              "SQLAgentPassword": "PrivateSettingsRef:SAgentPassword",
+              
+              "SQLAdmin": "[parameters('SQLAdmin')]",
+              "SQLAdminPwd": "PrivateSettingsRef:SAdminPwd",
 
               "BaseURL": "[variables('BaseURL')]"
             }
@@ -224,12 +227,9 @@
           },
           "protectedSettings": {
             "Items": {
-              "SQLServerAccount": "[parameters('SQLServerAccount')]",
-              "SQLServerPassword": "[parameters('SQLServerPassword')]",
-              "SQLAgentAccount": "[parameters('SQLAgentAccount')]",
-              "SQLAgentPassword": "[parameters('SQLAgentPassword')]",
-              "SQLAdmin": "[parameters('SQLAdmin')]",
-              "SQLAdminPwd": "[parameters('SQLAdminPwd')]"
+              "SServerPassword": "[parameters('SQLServerPassword')]",
+              "SAgentPassword": "[parameters('SQLAgentPassword')]",
+              "SAdminPwd": "[parameters('SQLAdminPwd')]"
             }
           }
         }
