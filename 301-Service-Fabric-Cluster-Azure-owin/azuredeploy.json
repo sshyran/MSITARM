@@ -306,16 +306,11 @@
     "applicationDiagnosticsStorageAccountName": "[toLower(concat(uniqueString(resourceGroup().id), '3' ))]",
 
     "branch": "develop",
-    "folder": "/301-Service-Fabric-Cluster-ERNetwork-Owin/",
+    "folder": "/301-Service-Fabric-Cluster-Azure-Owin/",
     "baseURL": "[concat('https://raw.githubusercontent.com/Microsoft/MSITARM/',variables('branch'),variables('folder'))]",
-
-    "IISDeployzip": "scripts/Deploy-WebServer.ps1.zip",
-    "configurationFunction": "Deploy-WebServer.ps1\\DeployWebServer",
 
     "FEILB": "[concat('FE',parameters('lbName'),'')]",
     "WorkerILB": "[concat('Wrk',parameters('lbName'),'')]",
-
-    "AvailabilitySet": "[concat(parameters('lbName'),'set')]",
 
     "FEavailabilitySetName": "[concat('',parameters('vmNodeType0Name'),'SS')]",
     "WRKavailabilitySetName": "[concat('',parameters('vmNodeType1Name'),'SS')]",
@@ -336,9 +331,9 @@
       "[concat('9', parameters('vmStorageAccountName1'))]"
     ],
     "vmExtensionName": "Microsoft.Powershell.DSC",
-    "DomainJoinzip": "scripts/DomainJoinSFC.ps1.zip",
-    "DomainJoinModule": "[concat(variables('BaseURL'),variables('DomainJoinzip'))]"
-
+    "zipfile": "scripts/Configure-SFCNodes.ps1.zip",
+    "ZipModule": "[concat(variables('BaseURL'),variables('zipfile'))]",
+    "Function": "Configure-SFCNodes.ps1\\SFCNodes"
   },
   "resources": [
     {
@@ -754,29 +749,16 @@
                   "typeHandlerVersion": "2.0",
                   "autoUpgradeMinorVersion": true,
                   "settings": {
-                    "ModulesUrl": "[variables('DomainJoinModule')]",
+                    "ModulesUrl": "[variables('ZipModule')]",
                     "SasToken": "",
-                    "ConfigurationFunction": "DomainJoinSFC.ps1\\DomainJoin",
+                    "ConfigurationFunction": "[variables('Function')]",
                     "Properties": {
-                      "Domain": "[parameters('DomainName')]",
-                      "LocalAccount": {
-                        "UserName": "[parameters('localAdminUserName')]",
-                        "Password": "PrivateSettingsRef:localPassword"
-                      },
-                      "DomainAccount": {
-                        "UserName": "[parameters('domainJoinUserName')]",
-                        "Password": "PrivateSettingsRef:DomainPassword"
-                      },
                       "LocalAdmins": "[parameters('localAdmins')]",
-                      "SQLAdmins": "",
-                      "OU": "[parameters('ouPath')]"
+                      "InstallSFC": 1
                     }
                   },
                   "protectedSettings": {
-                    "Items": {
-                      "LocalPassword": "[parameters('localAdminUserName')]",
-                      "DomainPassword": "[parameters('domainJoinPassword')]"
-                    }
+                    
 
                   }
                 }
