@@ -13,11 +13,17 @@ Configuration DeploySQLServer
    [string] $TempDBPath="T:\MSSqlServer\MSSQL\DATA",
    
    [parameter(Mandatory=$true)]
-   [System.Management.Automation.PSCredential]$SQLServerAccount,
+   [string] $SQLServerAccount,
    [parameter(Mandatory=$true)]
-   [System.Management.Automation.PSCredential] $SQLAgentAccount,
+   [string] $SQLServerPassword,
    [parameter(Mandatory=$true)]
-   [System.Management.Automation.PSCredential] $SQLAdmin,
+   [string] $SQLAgentAccount,
+   [parameter(Mandatory=$true)]
+   [string] $SQLAgentPassword,
+   [parameter(Mandatory=$true)]
+   [string] $SQLAdmin,
+   [parameter(Mandatory=$true)]
+   [string] $SQLAdminPwd,
 
    [Parameter(Mandatory)]
    [string] $baseurl="https://raw.githubusercontent.com/Microsoft/MSITARM/"
@@ -26,8 +32,6 @@ Configuration DeploySQLServer
   Node localhost
   {
   
-    write-host $($SQLServerAccount.username)
-    write-host $($SQLServerAccount.password)
 
     $InstanceName =Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server' -Name InstalledInstances | Select-Object -ExpandProperty InstalledInstances | ?{$_ -eq 'MSSQLSERVER'}
     $InstanceFullName = Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL' -Name $InstanceName | Select-Object -ExpandProperty $InstanceName;
@@ -2984,7 +2988,7 @@ Configuration DeploySQLServer
             }
             SetScript = {
             
-                if($using:SQLServerAccount.username -and $using:SQLServerAccount.password) {
+                if($using:SQLServerAccount -and $using:SQLServerPassword) {
                                 
                     ############################################             
                     $null=[System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.ConnectionInfo") 
@@ -3005,7 +3009,7 @@ Configuration DeploySQLServer
                         #set sql Service
                       
                         $svc = $wmi.services | where {$_.Type -eq 'SqlServer'} 
-                        $svc.SetServiceAccount($using:SQLServerAccount.username,$using:SQLServerAccount.Password)
+                        $svc.SetServiceAccount($using:SQLServerAccount,$using:SQLServerPassword)
                         
                         $svc = $wmi.services | where {$_.DisplayName -match 'SQL'}
 
@@ -3018,7 +3022,7 @@ Configuration DeploySQLServer
             TestScript = { 
                 $pass=$false
                 
-                if($using:SQLServerAccount.username -and $using:SQLServerAccount.password) {
+                if($using:SQLServerAccount -and $using:SQLServerPassword) {
                                         
                     ############################################             
                     $null=[System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.ConnectionInfo") 
@@ -3031,7 +3035,7 @@ Configuration DeploySQLServer
                     $svc = $wmi.services | where {$_.Type -eq 'SqlServer'} 
                     
                         try {
-                            $pass = $($svc.ServiceAccount -eq $using:SQLServerAccount.username)
+                            $pass = $($svc.ServiceAccount -eq $using:SQLServerAccount)
                         } catch {
                             $pass = $false
                         }
@@ -3056,12 +3060,12 @@ Configuration DeploySQLServer
                     $null=[System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.SqlWmiManagement")
                     ############################################
 
-                if($($using:SQLAgentAccount.username) -and $($using:SQLAgentAccount.password)) {
+                if($using:SQLAgentAccount -and $using:SQLAgentPassword) {
                     try {
                         $wmi = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $env:computername
                         $svc = $wmi.services | where {$_.Type -eq 'SqlAgent'} 
                         $svc.Start()
-                        $svc.SetServiceAccount($using:SQLAgentAccount.username,$using:SQLAgentAccount.Password)
+                        $svc.SetServiceAccount($using:SQLAgentAccount,$using:SQLAgentPassword)
 
                     } catch {}
                 }
@@ -3070,7 +3074,7 @@ Configuration DeploySQLServer
             TestScript = { 
                 $pass=$false
 
-                if($($using:SQLAgentAccount.username) -and $($using:SQLAgentAccount.password)) {
+                if($using:SQLAgentAccount -and $using:SQLAgentPassword) {
                     
                         ############################################             
                         $null=[System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.ConnectionInfo") 
@@ -3085,7 +3089,7 @@ Configuration DeploySQLServer
                         $svc.Start()
 
                         try {
-                            $pass = $($svc.ServiceAccount -eq $($using:SQLAgentAccount.username))
+                            $pass = $($svc.ServiceAccount -eq $using:SQLAgentAccount)
                         } catch {
                             $pass = $false
                         }
