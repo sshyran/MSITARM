@@ -158,6 +158,7 @@ configuration DomainJoin
             DependsOn= '[Script]ConfigureEventLog'
         }    
       
+      if((gwmi win32_computersystem).partofdomain -eq $false) {
         xComputer DomainJoin
         {
             Name = $env:computername
@@ -166,6 +167,7 @@ configuration DomainJoin
             ouPath = $ou
             DependsOn= '[Script]ConfigureDVDDrive'
         }
+       }
 
         WindowsFeature RSATTools
         {
