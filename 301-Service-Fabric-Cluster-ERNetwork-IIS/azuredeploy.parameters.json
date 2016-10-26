@@ -38,6 +38,7 @@
     "vmStorageAccountName0": {
       "value": ""
     },
+   
     "nt0applicationStartPort": {
       "value": 20000
     },
@@ -56,6 +57,7 @@
     "nt0fabricHttpGatewayPort": {
       "value": 19080
     },
+   
     "publicIPAddressName": {
       "value": "PublicIP-VM"
     },
@@ -113,6 +115,9 @@
     "loadBalancedAppPort3": {
       "value": 8506
     },
+    "loadBalancedwrkPort4": {
+      "value": 8080
+    },
     "storageAccountType0": {
       "value": "Standard_LRS"
     },
@@ -123,9 +128,8 @@
     "applicationDiagnosticsStorageAccountType": {
       "value": "Standard_LRS"
     },
-
     "vmNodeType0Name": {
-      "value": "NodeType3"
+      "value": "FrontEnd"
     },
     "vmNodeType0Size": {
       "value": "Standard_D2"
@@ -133,7 +137,7 @@
     "vmNodeType0Count": {
       "value": 5
     },
-    "certificateThumbprint": {
+     "certificateThumbprint": {
       "value": ""
     },
     "certificateStoreValue": {
