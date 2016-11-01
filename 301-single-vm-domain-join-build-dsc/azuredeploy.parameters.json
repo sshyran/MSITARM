@@ -23,6 +23,12 @@
     "localAdmins": {
       "value": ""
     },
+    "CiOwner": {
+      "value": ""
+    },
+    "CiAnalystGroup": {
+      "value": ""
+    },
     "appID": {
       "value": ""
     },
@@ -42,9 +48,6 @@
       "value": ""
     },
     "sku": {
-      "value": ""
-    },
-    "snoozeDate": {
       "value": ""
     },
     "storageAccountType": {
