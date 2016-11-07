@@ -41,6 +41,7 @@
 
     "configurationFunction": "FormatDataDisk.ps1\\FormatDataDisks",
     "formatDiskszip": "scripts/FormatDataDisk.ps1.zip",
+    "diskarrayTemplate": "nested/DiskArray.json",
 
     "modulesUrl": "[concat(variables('BaseURL'),variables('formatDiskszip'))]",
 
@@ -72,10 +73,11 @@
           "DiskLabel": "TempDB",
           "DiskSize": "[parameters('T_DriveSize')]"
         }
-      }
+      },
+      "vmDiskTemplate": "[concat(variables('BaseURL'), variables('diskarrayTemplate'))]"
     },
-    "DiskSKU": "[variables(concat('SQLPrem','Disk'))]"
 
+    "DiskSKU": "[variables(concat('SQLPrem','Disk'))]"
   },
     "resources": [
     {
