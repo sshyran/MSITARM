@@ -619,7 +619,7 @@
         },
         "parameters": {
           "vmName": {
-            "value": "[concat(parameters('vmName'))]"
+            "value": "[concat(parameters('vmName'),copyindex(1))]"
           },
           "H_DriveSize": {
             "value": "[parameters('H_DriveSize')]"
