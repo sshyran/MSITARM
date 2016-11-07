@@ -266,7 +266,7 @@
     "availabilitySetName": "[parameters('AvailabilitySet')]",
     "DomainJoinzip": "scripts/DomainJoin.ps1.zip",
     "formatDiskszip": "scripts/FormatDataDisk.ps1.zip",
-    "formatDiskstemplate": "nested/template-DataDisks.json",
+    "formatDiskstemplate": "nested/template-FixedDataDisks.json",
     "diskarrayTemplate": "nested/DiskArray.json",
     "SetStaticIP": "nested/template-SetStaticIP.json",
 
