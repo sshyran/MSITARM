@@ -9,25 +9,25 @@
       }
     },
     "H_DriveSize": {
-      "type": "string",
+      "type": "int",
       "metadata": {
         "description": "The size in GB for the H drive."
       }
     },
     "O_DriveSize": {
-      "type": "string",
+      "type": "int",
       "metadata": {
         "description": "The size in GB for the O drive."
       }
     },
     "T_DriveSize": {
-      "type": "string",
+      "type": "int",
       "metadata": {
         "description": "The size in GB for the T drive."
       }
     },
     "E_DriveSize": {
-      "type": "string",
+      "type": "int",
       "metadata": {
         "description": "The size in GB for the T drive."
       }
