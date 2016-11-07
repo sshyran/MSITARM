@@ -618,9 +618,9 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-            "vmName": {
+          "vmName": {
             "value": "[concat(parameters('vmName'))]"
-          }
+          },
           "H_DriveSize": {
             "value": "[parameters('H_DriveSize')]"
           },
