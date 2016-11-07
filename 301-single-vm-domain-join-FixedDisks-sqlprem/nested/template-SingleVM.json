@@ -522,9 +522,6 @@
           "vmName": {
             "value": "[concat(parameters('vmName'))]"
           },
-          "vmSize": {
-            "value": "[parameters('vmSize')]"
-          },
           "H_DriveSize": {
             "value": "[parameters('H_DriveSize')]"
           },
