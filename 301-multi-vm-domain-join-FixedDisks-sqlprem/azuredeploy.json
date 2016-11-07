@@ -674,7 +674,7 @@
         }
       },
       "dependsOn": [
-        "[concat('Microsoft.Resources/deployments/','AttachVMtoPullServer',parameters('DiskConfig'),'1')]"
+        "[concat('Microsoft.Resources/deployments/','AttachVMtoPullServer',parameters('vmName'),'1')]"
       ]
     }
   ]
