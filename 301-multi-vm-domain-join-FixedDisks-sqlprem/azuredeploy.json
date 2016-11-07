@@ -160,7 +160,9 @@
       }
     },
     "H_DriveSize": {
-      "type": "string",
+      "type": "int",
+      "minValue": 10,
+      "maxValue": 1024,
       "metadata": {
         "description": "The size in GB for the H drive."
       }
@@ -172,7 +174,9 @@
       }
     },
     "O_DriveSize": {
-      "type": "string",
+      "type": "int",
+      "minValue": 10,
+      "maxValue": 1024,
       "metadata": {
         "description": "The size in GB for the O drive."
       }
@@ -184,7 +188,9 @@
       }
     },
     "T_DriveSize": {
-      "type": "string",
+      "type": "int",
+      "minValue": 10,
+      "maxValue": 1024,
       "metadata": {
         "description": "The size in GB for the T drive."
       }
@@ -196,7 +202,9 @@
       }
     },
     "E_DriveSize": {
-      "type": "string",
+      "type": "int",
+      "minValue": 10,
+      "maxValue": 1024,
       "metadata": {
         "description": "The size in GB for the E drive."
       }

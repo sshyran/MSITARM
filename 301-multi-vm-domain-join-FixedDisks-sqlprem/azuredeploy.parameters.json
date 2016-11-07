@@ -84,25 +84,25 @@
       "value": ""
     },
     "H_DriveSize": {
-      "value": "500"
+      "value": 500
     },
     "H_DriveCache": {
-      "value": "true"
+      "value": "ReadWrite"
     },
     "O_DriveSize": {
-      "value": "200"
+      "value": 250
     },
     "O_DriveCache": {
-      "value": "true"
+      "value": "none"
     },
     "T_DriveSize": {
-      "value": "400"
+      "value": 300
     },
     "T_DriveCache": {
-      "value": "false"
+      "value": "none"
     },
     "E_DriveSize": {
-      "value": "400"
+      "value": 200
     },
     "E_DriveCache": {
       "value": "false"
