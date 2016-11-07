@@ -96,10 +96,10 @@
         "description": "Allowed Windows values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter. Allowed SQL values: Enterprise, Standard, Web, Express."
       }
     },
-    "H_DriveSize": {
-      "type": "string",
+   "H_DriveSize": {
+      "type": "int",
       "metadata": {
-        "description": "The size in GB for the H drive."
+        "description": "The size in GB for the H drive. "
       }
     },
     "H_DriveCache": {
@@ -109,7 +109,7 @@
       }
     },
     "O_DriveSize": {
-      "type": "string",
+      "type": "int",
       "metadata": {
         "description": "The size in GB for the O drive."
       }
@@ -121,7 +121,7 @@
       }
     },
     "T_DriveSize": {
-      "type": "string",
+      "type": "int",
       "metadata": {
         "description": "The size in GB for the T drive."
       }
@@ -133,8 +133,8 @@
       }
     },
     "E_DriveSize": {
-      "type": "string",
-      "metadata": {
+      "type": "int",
+        "metadata": {
         "description": "The size in GB for the E drive."
       }
     },
