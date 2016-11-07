@@ -84,7 +84,7 @@
       "minValue": 10,
       "maxValue": 1024,
       "metadata": {
-        "description": "The size in GB for the H drive."
+        "description": "The size in GB for the H drive. "
       }
     },
     "H_DriveCache": {
