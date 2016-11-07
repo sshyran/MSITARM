@@ -244,7 +244,7 @@
       "minLength": 1,
       "defaultValue": "",
       "metadata": {
-        "description": "CiOwner tag for the Virtual Machine."
+        "description": "CiOwner tag for the Virtual Machine. use YOUR ALIAS redmond\\myalias "
       }
     },
     "CiAnalystGroup": {
