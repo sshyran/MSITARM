@@ -253,7 +253,7 @@
 
     "DomainJoinzip": "scripts/DomainJoin.ps1.zip",
     "formatDiskszip": "scripts/FormatDataDisk.ps1.zip",
-    "formatDiskstemplate": "nested/template-DataDisks.json",
+    "formatDiskstemplate": "nested/template-FuxedDataDisks.json",
 
     "SetStaticIP": "nested/template-SetStaticIP.json",
 
