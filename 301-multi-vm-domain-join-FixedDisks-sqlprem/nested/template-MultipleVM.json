@@ -407,7 +407,7 @@
               "name": "[concat(parameters('vmName'),'-DataDiskH')]",
               "lun": 0,
               "vhd": {
-                "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'), 'datadiskH.vhd')]"
+                "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'),copyindex(1), 'datadiskH.vhd')]"
               },
               "createOption": "Empty",
               "caching": "[parameters('H_DriveCache')]",
@@ -417,7 +417,7 @@
               "name": "[concat(parameters('vmName'),'-DataDiskO')]",
               "lun": 1,
               "vhd": {
-                "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'), 'datadiskO.vhd')]"
+                "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'),copyindex(1), 'datadiskO.vhd')]"
               },
               "createOption": "Empty",
               "caching": "[parameters('O_DriveCache')]",
@@ -427,7 +427,7 @@
               "name": "[concat(parameters('vmName'),'-DataDiskT')]",
               "lun": 2,
               "vhd": {
-                "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'), 'datadiskT.vhd')]"
+                "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'),copyindex(1), 'datadiskT.vhd')]"
               },
               "createOption": "Empty",
               "caching": "[parameters('T_DriveCache')]",
@@ -437,7 +437,7 @@
               "name": "[concat(parameters('vmName'),'-DataDiskE')]",
               "lun": 3,
               "vhd": {
-                "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'), 'datadiskE.vhd')]"
+                "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'),copyindex(1), 'datadiskE.vhd')]"
               },
               "createOption": "Empty",
               "caching": "[parameters('E_DriveCache')]",
