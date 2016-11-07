@@ -435,7 +435,7 @@
             },
             {
               "name": "[concat(parameters('vmName'),'-DataDiskE')]",
-              "lun": 2,
+              "lun": 3,
               "vhd": {
                 "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'), 'datadiskE.vhd')]"
               },
