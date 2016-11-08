@@ -11,49 +11,6 @@
         "description": "Name for the Virtual Machine."
       }
     },
-    "AvailabilitySet": {
-      "type": "string",
-      "defaultValue": "",
-      "minLength": 3,
-      "metadata": {
-        "description": "Name for the AvailabilitySet."
-      }
-    },
-    "loadBalancerName": {
-      "type": "string",
-      "defaultValue": "",
-      "minLength": 3,
-      "metadata": {
-        "description": "Name for the LoadBalancer."
-      }
-    },
-    "AOAGListenerName": {
-      "type": "string",
-      "defaultValue": "",
-      "minLength": 3,
-      "maxLength": 15,
-      "metadata": {
-        "description": "Name for the Listener."
-      }
-    },
-    "AOAGName": {
-      "type": "string",
-      "defaultValue": "",
-      "minLength": 3,
-      "maxLength": 20,
-      "metadata": {
-        "description": "Name for the Availability Group."
-      }
-    },
-    "FailoverClusterName": {
-      "type": "string",
-      "defaultValue": "",
-      "minLength": 3,
-      "maxLength": 10,
-      "metadata": {
-        "description": "Name for the FailoverCluster."
-      }
-    },
     "numberOfInstances": {
       "type": "int",
       "defaultValue": 2,
@@ -100,7 +57,7 @@
     },
     "SQLAdmins": {
       "type": "string",
-      "defaultValue": "",
+      "defaultValue": "domain\\SQLSvcAccounts",
       "metadata": {
         "description": "SQL SYS admins that can login to the Default SQL Instance instaqlled on the VM. csv list of domain\\user"
       }
@@ -109,28 +66,28 @@
       "type": "string",
       "minLength": 1,
       "metadata": {
-        "description": "Password for domain joining"
+        "description": "The account to use for running the SQL Service"
       }
     },
     "SQLServerPassword": {
       "type": "securestring",
       "minLength": 1,
       "metadata": {
-        "description": "Password for domain joining"
+        "description": "The password to use for running the SQL Service"
       }
     },
     "SQLAgentAccount": {
       "type": "string",
       "minLength": 1,
       "metadata": {
-        "description": "Password for domain joining"
+        "description": "The account to use for running the SQL Agent Service"
       }
     },
     "SQLAgentPassword": {
       "type": "securestring",
       "minLength": 1,
       "metadata": {
-        "description": "Password for domain joining"
+        "description": "The password use for running the SQL Agent Service"
       }
     },
     "vmSize": {
@@ -142,35 +99,56 @@
     },
     "imagePublisher": {
       "type": "string",
+      "defaultValue": "MicrosoftSQLServer",
+      "allowedValues": [
+        "MicrosoftSQLServer"
+      ],
       "metadata": {
-        "description": "See Azure for available ImagePublisher for your Location. Sample Code: <p><a target=new href=https://msitwiki/get-imagepublisher-imageoffer-imagesku-for-arm-templates/>Get-AzureRMVMImagePublisher</a></p> Example: <p>MicrosoftSQLServer or MicrosoftWindowsServer</p>"
+        "description": "OS Image Publisher. https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-cli-ps-findimage/"
       }
     },
     "imageOffer": {
       "type": "string",
+      "defaultValue": "",
+      "allowedValues": [
+        "SQL2014SP1-WS2012R2",
+        "SQL2014-WS2012R2",
+        "SQL2016CTP3-WS2012R2",
+        "SQL2016CTP3.1-WS2012R2",
+        "SQL2016CTP3.2-WS2012R2",
+        "SQL2016RC3-WS2012R2v2"
+      ],
       "metadata": {
-        "description": "See ImagePublisher link for more details."
+        "description": "Allowed Windows values: WindowsServer. Allowed SQL Values: SQL2012SP2-WS2012R2,SQL2014-WS2012R2, SQL2014SP1-WS2012R2, SQL2016CTP3-WS2012R2, SQL2016CTP3.1-WS2012R2, SQL2016CTP3.2-WS2012R2, SQL2016RC3-WS2012R2v2."
       }
     },
     "sku": {
       "type": "string",
       "minLength": 1,
+      "defaultValue": "",
+      "allowedValues": [
+        "Enterprise",
+        "Web",
+        "Standard",
+        "Express"
+      ],
       "metadata": {
-        "description": "See Azure for available ImageSKU for your Location. Sample Code: <p><a target=new href=https://msitwiki/get-imagepublisher-imageoffer-imagesku-for-arm-templates/>Get-AzureRmVMImageSku</a></p> Example: <p>Enterprise, Standard, Web, Express.<p>"
+        "description": "Allowed Windows values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter. Allowed SQL values: Enterprise, Standard, Web, Express."
       }
     },
-    "H_DriveSize": {
+   "H_DriveSize": {
       "type": "int",
       "minValue": 10,
       "maxValue": 1024,
       "metadata": {
-        "description": "The size in GB for the H drive."
+        "description": "The size in GB for the H drive from 10GB to 1024GB"
       }
     },
     "H_DriveCache": {
       "type": "string",
+      "defaultValue": "None",
       "metadata": {
-        "description": "Use Caching?"
+        "description": "Use Caching? ReadWrite,Read,None"
       }
     },
     "O_DriveSize": {
@@ -178,13 +156,14 @@
       "minValue": 10,
       "maxValue": 1024,
       "metadata": {
-        "description": "The size in GB for the O drive."
+        "description": "The size in GB for the O drive from 10GB to 1024GB"
       }
     },
     "O_DriveCache": {
       "type": "string",
+      "defaultValue": "None",
       "metadata": {
-        "description": "Use Caching?"
+        "description": "Use Caching? ReadWrite,Read,None"
       }
     },
     "T_DriveSize": {
@@ -192,13 +171,14 @@
       "minValue": 10,
       "maxValue": 1024,
       "metadata": {
-        "description": "The size in GB for the T drive."
+        "description": "The size in GB for the T drive from 10GB to 1024GB"
       }
     },
     "T_DriveCache": {
       "type": "string",
+      "defaultValue": "None",
       "metadata": {
-        "description": "Use Caching?"
+        "description": "Use Caching? Read, ReadWrite, or None"
       }
     },
     "E_DriveSize": {
@@ -206,13 +186,14 @@
       "minValue": 10,
       "maxValue": 1024,
       "metadata": {
-        "description": "The size in GB for the E drive."
+        "description": "The size in GB for the E drive from 10GB to 1024GB"
       }
     },
     "E_DriveCache": {
       "type": "string",
+      "defaultValue": "None",
       "metadata": {
-        "description": "Use Caching?"
+        "description": "Use Caching? Read, ReadWrite, or None"
       }
     },
     "userImageStorageAccountName": {
@@ -236,7 +217,7 @@
       "type": "string",
       "defaultValue": "",
       "metadata": {
-        "description": "The FQDN of the AD domain, currently only Redmond domain is supported. "
+        "description": "The FQDN of the AD domain. "
       }
     },
     "CiOwner": {
@@ -244,7 +225,7 @@
       "minLength": 1,
       "defaultValue": "",
       "metadata": {
-        "description": "CiOwner tag for the Virtual Machine. use YOUR ALIAS redmond\\myalias "
+        "description": "CiOwner tag for the Virtual Machine. use YOUR ALIAS domain\\myalias "
       }
     },
     "CiAnalystGroup": {
@@ -294,6 +275,10 @@
     "vnetResourceGroup": {
       "type": "string",
       "defaultValue": "ERNetwork",
+      "allowedValues": [
+        "ERNetwork",
+        "ERNetwork-DMZ"
+      ],
       "metadata": {
         "description": "Name for the Resource Group that contains VirtualNetwork"
       }
@@ -309,7 +294,7 @@
       "type": "string",
       "defaultValue": "",
       "metadata": {
-        "description": "The Organizational Unit the VM will join"
+        "description": "The Organizational path the VM will join"
       }
     },
     "PullServerRegistrationKey": {
@@ -324,27 +309,6 @@
       "defaultValue": "",
       "metadata": {
         "description": "The pull server URI"
-      }
-    },
-    "vaultname": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "The vault Name"
-      }
-    },
-    "vaultkey": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "The Vault key"
-      }
-    },
-    "vaultResourceGroup": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "The Vault resource Group"
       }
     }
   },
@@ -368,10 +332,6 @@
     "AttachVMtoPullServerURL": "[concat(variables('BaseURL'),variables('configurePullTemplate'))]",
 
     "BuildMachineRoleURL": "[concat(variables('BaseURL'),'nested/template-Build',variables('Role'), '.json')]",
-    "BuildILBCluster": "[concat(variables('BaseURL'),'nested/template-BuildILB.json')]",
-
-    "vaultname": "[parameters('vaultname')]",
-    "vaultkey": "[parameters('vaultkey')]",
 
     "AzureAutomation": {
       "Url": "https://github.com/Azure/azure-quickstart-templates/raw/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip",
@@ -416,12 +376,6 @@
           "vmName": {
             "value": "[parameters('vmName')]"
           },
-          "AvailabilitySet": {
-            "value": "[parameters('AvailabilitySet')]"
-          },
-          "loadBalancerName": {
-            "value": "[parameters('loadBalancerName')]"
-          },
           "vmSize": {
             "value": "[parameters('vmSize')]"
           },
@@ -444,10 +398,10 @@
             "value": "[parameters('T_DriveCache')]"
           },
           "E_DriveSize": {
-            "value": "[parameters('T_DriveSize')]"
+            "value": "[parameters('E_DriveSize')]"
           },
           "E_DriveCache": {
-            "value": "[parameters('T_DriveCache')]"
+            "value": "[parameters('E_DriveCache')]"
           },
           "numberOfInstances": {
             "value": "[parameters('numberOfInstances')]"
@@ -469,6 +423,12 @@
           },
           "domainName": {
             "value": "[parameters('domainName')]"
+          },
+          "CiOwner": {
+            "value": "[parameters('CiOwner')]"
+          },
+          "CiAnalystGroup": {
+            "value": "[parameters('CiAnalystGroup')]"
           },
           "appID": {
             "value": "[parameters('appID')]"
@@ -534,10 +494,10 @@
               "value": "[parameters('T_DriveCache')]"
             },
             "E_DriveSize": {
-              "value": "[parameters('T_DriveSize')]"
+              "value": "[parameters('E_DriveSize')]"
             },
             "E_DriveCache": {
-              "value": "[parameters('T_DriveCache')]"
+              "value": "[parameters('E_DriveCache')]"
             },
           "SQLServerAccount": {
             "value": "[parameters('SQLServerAccount')]"
@@ -597,84 +557,6 @@
       },
       "dependsOn": [
         "[concat('Microsoft.Resources/deployments/',parameters('vmName'),copyindex(1),'-BuildMachineRole-',variables('Role'))]"
-      ]
-    },
-    {
-      "apiVersion": "2015-01-01",
-      "name": "[concat(parameters('vmName'),'1','-BuildILBConfiguration')]",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('BuildILBCluster')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "vmName": {
-            "value": "[parameters('vmName')]"
-          },
-          "numberOfInstances": {
-            "value": "[parameters('numberOfInstances')]"
-          },
-          "DomainName": {
-            "value": "[parameters('domainName')]"
-          },
-          "AOAGListenerName": {
-            "value": "[parameters('AOAGListenerName')]"
-          },
-          "AOAGName": {
-            "value": "[parameters('AOAGName')]"
-          },
-          "FailoverClusterName": {
-            "value": "[parameters('FailoverClusterName')]"
-          },
-          "loadBalancerName": {
-            "value": "[parameters('loadBalancerName')]"
-          },
-          "ILBURIkey": {
-            "reference": {
-              "keyVault": {
-                "id": "[concat('/subscriptions/',variables('vaultkey'),'/resourceGroups/',parameters('vaultResourceGroup'),'/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
-              },
-              "secretName": "ILBURIkey"
-            }
-          },
-          "ILBSubId": {
-            "reference": {
-              "keyVault": {
-                "id": "[concat('/subscriptions/',variables('vaultkey'),'/resourceGroups/',parameters('vaultResourceGroup'),'/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
-              },
-              "secretName": "ILBSubId"
-            }
-          },
-          "ILBResourceGroup": {
-            "reference": {
-              "keyVault": {
-                "id": "[concat('/subscriptions/',variables('vaultkey'),'/resourceGroups/',parameters('vaultResourceGroup'),'/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
-              },
-              "secretName": "ILBResourceGroup"
-            }
-          },
-          "ILBAccount": {
-            "reference": {
-              "keyVault": {
-                "id": "[concat('/subscriptions/',variables('vaultkey'),'/resourceGroups/',parameters('vaultResourceGroup'),'/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
-              },
-              "secretName": "ILBAccount"
-            }
-          },
-          "DashboardURL": {
-            "reference": {
-              "keyVault": {
-                "id": "[concat('/subscriptions/',variables('vaultkey'),'/resourceGroups/',parameters('vaultResourceGroup'),'/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
-              },
-              "secretName": "DashboardURL"
-            }
-          }
-        }
-      },
-      "dependsOn": [
-        "[concat('Microsoft.Resources/deployments/','AttachVMtoPullServer',parameters('vmName'),'1')]"
       ]
     }
   ]
