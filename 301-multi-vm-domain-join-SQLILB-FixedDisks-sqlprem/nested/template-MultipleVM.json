@@ -509,46 +509,46 @@
             }
           },
          "dataDisks": [
-            {
-              "name": "[concat(parameters('vmName'),'-DataDiskH')]",
-              "lun": 0,
-              "vhd": {
-                "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'),copyindex(1), 'datadiskH.vhd')]"
-              },
-              "createOption": "Empty",
-              "caching": "[parameters('H_DriveCache')]",
-              "diskSizeGB": "[parameters('H_DriveSize')]"
+          {
+            "name": "[concat(parameters('vmName'),copyindex(1),'-DataDiskH')]",
+            "lun": 0,
+            "vhd": {
+              "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'),copyindex(1), 'datadiskH.vhd')]"
             },
-            {
-              "name": "[concat(parameters('vmName'),'-DataDiskO')]",
-              "lun": 1,
-              "vhd": {
-                "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'),copyindex(1), 'datadiskO.vhd')]"
-              },
-              "createOption": "Empty",
-              "caching": "[parameters('O_DriveCache')]",
-              "diskSizeGB": "[parameters('O_DriveSize')]"
+            "createOption": "Empty",
+            "caching": "[parameters('H_DriveCache')]",
+            "diskSizeGB": "[parameters('H_DriveSize')]"
+          },
+          {
+            "name": "[concat(parameters('vmName'),copyindex(1),'-DataDiskO')]",
+            "lun": 1,
+            "vhd": {
+              "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'),copyindex(1), 'datadiskO.vhd')]"
             },
-            {
-              "name": "[concat(parameters('vmName'),'-DataDiskT')]",
-              "lun": 2,
-              "vhd": {
-                "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'),copyindex(1), 'datadiskT.vhd')]"
-              },
-              "createOption": "Empty",
-              "caching": "[parameters('T_DriveCache')]",
-              "diskSizeGB": "[parameters('T_DriveSize')]"
+            "createOption": "Empty",
+            "caching": "[parameters('O_DriveCache')]",
+            "diskSizeGB": "[parameters('O_DriveSize')]"
+          },
+          {
+            "name": "[concat(parameters('vmName'),copyindex(1),'-DataDiskT')]",
+            "lun": 2,
+            "vhd": {
+              "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'),copyindex(1), 'datadiskT.vhd')]"
             },
-            {
-              "name": "[concat(parameters('vmName'),'-DataDiskE')]",
-              "lun": 3,
-              "vhd": {
-                "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'),copyindex(1), 'datadiskE.vhd')]"
-              },
-              "createOption": "Empty",
-              "caching": "[parameters('E_DriveCache')]",
-              "diskSizeGB": "[parameters('E_DriveSize')]"
-            }
+            "createOption": "Empty",
+            "caching": "[parameters('T_DriveCache')]",
+            "diskSizeGB": "[parameters('T_DriveSize')]"
+          },
+          {
+            "name": "[concat(parameters('vmName'),copyindex(1),'-DataDiskE')]",
+            "lun": 3,
+            "vhd": {
+              "uri": "[concat('http://', parameters('userImageStorageAccountName'),'.blob.core.windows.net/vhds/',parameters('vmName'),copyindex(1), 'datadiskE.vhd')]"
+            },
+            "createOption": "Empty",
+            "caching": "[parameters('E_DriveCache')]",
+            "diskSizeGB": "[parameters('E_DriveSize')]"
+          }
           ]
         },
         "networkProfile": {
