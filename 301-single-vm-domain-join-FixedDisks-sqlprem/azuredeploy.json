@@ -313,17 +313,12 @@
     "baseURL": "[concat('https://raw.githubusercontent.com/Microsoft/MSITARM/',variables('branch'),variables('folder'))]",
 
     "domainJoinzip": "scripts/DomainJoin.ps1.zip",
-    "formatDiskszip": "scripts/FormatDataDisk.ps1.zip",
-    "formatDiskstemplate": "nested/template-DataDisks.json",
     "createVMtemplate": "nested/template-SingleVM.json",
     "configurePullTemplate": "nested/template-ConfigureDscPull.json",
-    "configurationFunction": "FormatDataDisks.ps1\\FormatDataDisks",
 
     "Role": "SQL",
 
-    "moduleURL": "[concat(variables('BaseURL'),variables('formatDiskszip'))]",
     "CreateVMUrl": "[concat(variables('BaseURL'),variables('createVMtemplate'))]",
-    "FormatDisksUrl": "[concat(variables('BaseURL'),variables('formatDiskstemplate'))]",
     "AttachVMtoPullServerURL": "[concat(variables('BaseURL'),variables('configurePullTemplate'))]",
 
     "BuildMachineRoleURL": "[concat(variables('BaseURL'),'nested/template-Build',variables('Role'), '.json')]",
